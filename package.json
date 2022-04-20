@@ -13,7 +13,8 @@
     "react-bootstrap": "^2.2.2",
     "react-dom": "^18.0.0",
     "react-redux": "^7.2.8",
-    "react-scripts": "5.0.0"
+    "react-scripts": "5.0.0",
+    "reactstrap": "^9.0.1"
   },
   "scripts": {
     "start": "PORT=3006 react-scripts start",

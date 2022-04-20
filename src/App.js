@@ -1,40 +1,20 @@
-import React, { useState, useEffect } from "react";
-import { createStore } from "redux";
-import ToggleButton from "react-bootstrap/ToggleButton";
+import { connect } from "react-redux";
+import "bootstrap/dist/css/bootstrap.min.css";
+import MainView from "./components/Home";
+import Header from "./components/Header";
 
-const initialState = { checked: false };
+const mapStateToProp = (state) => ({
+  appName: state.appName,
+});
 
-const reducer = (state = false, action) => {
-  switch (action.type) {
-    case "TOGGLE":
-      return !state;
-
-    default:
-      return state;
-  }
-};
-const store = createStore(reducer);
-
-function App() {
-  const [state, setState] = useState(store.getState());
-
-  useEffect(() => {
-    store.subscribe(() => {
-      console.log("subscription", store.getState());
-      setState(store.getState());
-    });
-  }, []);
-
-  const onChange = () => {
-    store.dispatch({ type: "TOGGLE" });
-  };
-
+const App = (props) => {
   return (
     <>
-      regrg
-      <ToggleButton type="checkbox" checked={state} onChange={onChange} />
+      <div className="navBar">
+        <Header appName={props.appName} />
+        <MainView />
+      </div>
     </>
   );
-}
-
-export default App;
+};
+export default connect(mapStateToProp, () => {})(App);
